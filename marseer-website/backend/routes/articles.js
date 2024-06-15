@@ -2,6 +2,8 @@ const express = require('express');
 const Article = require('../models/Article');
 
 const router = express.Router();
+const config = require('../../config'); // import configs
+
 
 // Get all articles
 router.get('/', async (req, res) => {
@@ -19,6 +21,15 @@ router.get('/recommendations/:category', async (req, res) => {
     const { category } = req.params;
     const recommendations = await Article.find({ category }).limit(5);
     res.json(recommendations);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+router.get('/featured', async (req, res) => {
+  try {
+    const featuredArticles = await Article.find({ featured: true }).limit(5);
+    res.json(featuredArticles);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

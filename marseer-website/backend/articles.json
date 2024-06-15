@@ -7,7 +7,8 @@
         "Sustainability",
         "Eco-friendly",
         "Ethical Fashion"
-      ]
+      ],
+      "featured": true
     },
     {
       "title": "Exploring the Wonders of Virtual Reality",
@@ -16,12 +17,19 @@
       "tags": [
         "Virtual Reality",
         "Virtual Training"
-      ]
+      ],
+      "featured": true
     },
     {
       "title": "The Essence of Mindful Living",
       "content": "Discover the art of mindful living through conscious practices. Learn techniques for mindful breathing, present moment awareness, and mindful interactions in daily life.",
-      "category": "Mindfulness"
+      "category": "Mindfulness",
+      "tags": [
+        "Spiritual",
+        "non-materialistic"
+      ],
+      "featured": false
     }
+    
   ]
   

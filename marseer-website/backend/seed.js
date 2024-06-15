@@ -20,8 +20,9 @@ db.once('open', () => {
   articlesJson.forEach(async (articleData) => {
     try {
     // Check if the article exists in the database
-    const existingArticle = await Article.findOne({ title: articleData.title });
     console.log("looping for title - ", articleData.title)
+    console.log("featured - ", articleData.featured)
+    const existingArticle = await Article.findOne({ title: articleData.title });
     
     if (!existingArticle) {
       // If the article is new, insert it
@@ -34,13 +35,18 @@ db.once('open', () => {
       const hasChanges =
         existingArticle.content !== articleData.content ||
         existingArticle.category !== articleData.category ||
+        existingArticle.featured !== articleData.featured ||
         !arraysEqual(existingArticle.tags, articleData.tags);
-
+      console.log("existing featured - ", existingArticle.featured)
+      console.log("updated featured - ", articleData.featured)
+      
       if (hasChanges) {
         // If any fields have changed, update the article
         existingArticle.content = articleData.content;
         existingArticle.category = articleData.category;
         existingArticle.tags = articleData.tags;
+        existingArticle.featured = articleData.featured;
+        
         const updatedArticle = await existingArticle.save();
         console.log('Article updated:', updatedArticle);
       } else {

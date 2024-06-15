@@ -5,6 +5,7 @@ const articleSchema = new mongoose.Schema({
   content: String,
   category: String,
   tags: [String],
+  featured: { type: Boolean, default: false},
 });
 
 const Article = mongoose.model('Article', articleSchema);

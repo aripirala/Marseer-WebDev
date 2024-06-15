@@ -13,7 +13,7 @@ MongoClient.connect(url, function(err, client) {
   const db = client.db(dbName);
 
   // Fetch all articles from the 'articles' collection
-  db.collection('articles').find({}).toArray(function(err, result) {
+  db.collection('articles').find({featured: true }).toArray(function(err, result) {
     if (err) throw err;
 
     console.log('Articles:', result);
